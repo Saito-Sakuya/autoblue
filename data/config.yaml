@@ -1,0 +1,45 @@
+telegram:
+  bot_token: "CHANGE_ME"
+  chat_id: null
+  allowed_user_id: null
+
+fetch:
+  interval_minutes: 120
+  max_candidates: 5
+  max_tweets_per_user: 5
+  send_no_updates: false
+
+x:
+  following_url: ""
+  user_data_dir: "./data/x_profile"
+  headless: false
+  cookies_file: "./data/x_cookies.json"
+  following_users: []
+  language: "en-US"
+
+ai:
+  api_url: ""
+  api_key: ""
+  model: "gpt-4o-mini"
+  prompt_system: "你是Galgame行业情报筛选助手。"
+  prompt_filter: |
+    你的任务是从社交媒体内容中筛选“真正重要的信息”。
+    保留：新作发表、发售相关、重大更新、行业重要事件、销量/榜单、重大延期取消。
+    忽略：日常宣传、周边商品、店铺活动、转发、声优个人宣传、倒计时图、重复宣传、旧作促销。
+  prompt_style: "输出简洁、正式、信息密度高，避免夸张。"
+  threshold_high: 0.75
+  threshold_mid: 0.55
+  temperature: 0.2
+  max_tokens: 800
+
+monitor:
+  keywords: []
+  blacklist: []
+  whitelist: []
+
+publish:
+  daily_limit: 5
+  windows: ["09:00", "12:00", "20:00"]
+  auto_publish: true
+
+sources: []
