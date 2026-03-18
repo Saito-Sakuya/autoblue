@@ -17,6 +17,7 @@ RUN pip install --no-cache-dir -r /app/requirements.txt
 COPY app /app/app
 COPY scripts /app/scripts
 COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh /app/scripts/*
 
 # daily housekeeping: prune sqlite
 RUN echo "17 3 * * * root /app/scripts/cron_housekeeping" > /etc/cron.d/xrss_housekeeping \

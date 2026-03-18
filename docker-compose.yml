@@ -1,7 +1,13 @@
 services:
-  xrss_tg:
+  autoblue:
     build: .
-    container_name: xrss_tg
+    container_name: autoblue
     restart: unless-stopped
+    stdin_open: true
+    tty: true
+    environment:
+      - TZ=Asia/Shanghai
+      # - HTTP_PROXY=http://172.17.0.1:7890
+      # - HTTPS_PROXY=http://172.17.0.1:7890
     volumes:
       - ./data:/data
