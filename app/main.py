@@ -408,6 +408,52 @@ def _parse_following_inputs(args):
     return uniq, False
 
 
+def _parse_following_inputs(args):
+    raw = " ".join(args).strip()
+    if not raw:
+        return [], False
+    tokens = []
+    for part in re.split(r"[\s,]+", raw):
+        if not part:
+            continue
+        tokens.append(part)
+    if len(tokens) == 1 and tokens[0].lower() in ("clear", "reset", "empty"):
+        return [], True
+
+    users = []
+    for t in tokens:
+        t = t.strip()
+        if not t:
+            continue
+        if t.startswith("http://") or t.startswith("https://"):
+            try:
+                u = urlparse(t)
+                path = u.path.strip("/")
+                if not path:
+                    continue
+                name = path.split("/")[0]
+            except Exception:
+                continue
+        else:
+            name = t
+        if name.startswith("@"):
+            name = name[1:]
+        name = name.strip()
+        if not name:
+            continue
+        if not re.match(r"^[A-Za-z0-9_]{1,15}$", name):
+            continue
+        users.append(name)
+
+    seen = set()
+    uniq = []
+    for u in users:
+        if u not in seen:
+            seen.add(u)
+            uniq.append(u)
+    return uniq, False
+
+
 async def cmd_set_following_url(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     svc: Service = context.application.bot_data["svc"]
     cfg = svc._cfg()
