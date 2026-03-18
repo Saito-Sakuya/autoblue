@@ -11,7 +11,7 @@
   - [核心能力](#核心能力)
   - [运行环境](#运行环境)
   - [快速安装 (Linux)](#快速安装-linux)
-  - [快速安装 (Docker)](#快速安装-docker)
+  - [~~快速安装 (Docker)~~Docker暂不可用](#快速安装-dockerdocker暂不可用)
   - [配置与启动](#配置与启动)
   - [Telegram 指令手册](#telegram-指令手册)
     - [核心设置](#核心设置)
@@ -50,35 +50,14 @@
    该脚本会自动创建虚拟环境、安装依赖并校验环境。
 
 2. **启动菜单进行配置**：
+   
    ```bash
    bash scripts/menu.sh
    ```
 
 ---
 
-## 快速安装 (Docker)
-
-1. **拉取代码并启动容器**：
-   ```bash
-   git clone https://github.com/Saito-Sakuya/autoblue
-   cd autoblue
-   docker-compose up -d
-   ```
-
-2. **进入交互式配置菜单**：
-   ```bash
-   docker exec -it autoblue bash scripts/menu.sh
-   ```
-   在菜单中完成 Bot Token、Chat ID 和 AI 参数的设置。
-
-3. **导入 Cookie**：
-   将 `cookies.json` 或 `cookies.txt` 放入项目的 `data/` 目录，或在上述菜单中选择“导入 Cookie”。
-
-4. **应用配置**：
-   配置完成后，重启容器：
-   ```bash
-   docker-compose restart
-   ```
+## ~~快速安装 (Docker)~~Docker暂不可用
 
 ---
 

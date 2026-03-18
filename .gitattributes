@@ -1,0 +1,8 @@
+# Force LF for shell scripts to prevent "env: bash\r: No such file or directory" on Linux/Docker
+*.sh text eol=lf
+entrypoint.sh text eol=lf
+scripts/cron_housekeeping text eol=lf
+scripts/menu.sh text eol=lf
+
+# Default behavior for other files
+* text=auto
